@@ -19,5 +19,8 @@ jQuery(function($){
 		})
 		.open();
 	});
- 
+	$('body').on('click', '.toggle', function(e){
+		$(this).toggleClass('open');
+		$('.rawp-field').toggle();
+	});
 });
