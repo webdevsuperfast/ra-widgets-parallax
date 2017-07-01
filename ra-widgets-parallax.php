@@ -33,19 +33,52 @@ class RA_Widgets_Parallax {
     }
 
     public function rawp_in_widget_form( $t, $return, $instance ) {
-        $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'parallax-image' => '' ) );
+        $instance = wp_parse_args( (array) $instance, array( 'parallax-image' => '', 'parallax-position' => '', 'parallax-speed' => '0.2' ) );
 
-        if ( !isset( $instance['parallax-image'] ) ) $instance['parallax-image'] = null; ?>
+        if ( !isset( $instance['parallax-image'] ) ) $instance['parallax-image'] = null;
+        if ( !isset( $instance['parallax-position'] ) ) $instance['parallax-position'] = null;
+        if ( !isset( $instance['parallax-speed'] ) ) $instance['parallax-speed'] = null; 
+        ?>
 
         <div class="rawp-fields">
-            <p><strong><?php echo __( 'Parallax Image', 'ra-widgets-parallax' ); ?></strong></p>
-            <hr>
-            <p>
-                <label for="<?php echo $t->get_field_name( 'parallax-image' ); ?>">
-                <input type="text" class="widefat" id="<?php echo $t->get_field_id( 'parallax-image' ); ?>" name="<?php echo $t->get_field_name( 'parallax-image' ); ?>" value="<?php echo $instance['parallax-image']; ?>" />
-                <a href="#" class="rawp_upload_image_button button button-primary"><?php echo __( 'Upload image', 'ra-widgets-parallax' ); ?></a>
-                </label>
-            </p>
+            <h3 class="toggle"><?php echo __( 'Parallax Settings', 'ra-widgets-parallax' ); ?></h3>
+            <div class="rawp-field" style="display: none;">
+                <p>
+                    <label for="<?php echo $t->get_field_name( 'parallax-image' ); ?>"><?php echo __( 'Image', 'ra-widgets-parallax' ); ?></label>
+                    <input type="text" class="widefat" id="<?php echo $t->get_field_id( 'parallax-image' ); ?>" name="<?php echo $t->get_field_name( 'parallax-image' ); ?>" value="<?php echo $instance['parallax-image']; ?>" />
+                    <span><em>You must provide a path to the image enable parallax effect.</em></span>
+                    <a href="#" class="rawp_upload_image_button button button-primary"><?php echo __( 'Upload image', 'ra-widgets-parallax' ); ?></a>
+                </p>
+                <p>
+                    <label for="<?php echo $t->get_field_id( 'parallax-position' ); ?>"><?php echo __( 'Position', 'ra-widgets-parallax' ); ?></label>
+                    <?php
+                    $positions = array(
+                        '' => __( 'Default' ),
+                        'center center' => __( 'Center Center' ),
+                        'center top' => __( 'Center Top' ),
+                        'center bottom' => __( 'Center Bottom' ),
+                        'right top' => __( 'Right Top' ),
+                        'right bottom' => __( 'Right Bottom' ),
+                        'left top' => __( 'Left Top' ),
+                        'left bottom' => __( 'Left Bottom' )
+                    ); ?>
+                    <select class="widefat" id="<?php echo $t->get_field_id('parallax-position'); ?>" name="<?php echo $t->get_field_name('parallax-position'); ?>">
+                        <?php foreach( $positions as $key => $value ) { ?>
+                            <option <?php selected( $instance['parallax-position'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                        <?php } ?>
+                    </select>
+                    <span><em>This is analogous to the background-position css property.</em></span>
+                </p>
+                <p>
+                    <label for="<?php echo $t->get_field_id('parallax-speed'); ?>"><?php echo __( 'Speed', 'ra-widgets-parallax' ); ?></label>
+                    <select class="widefat" id="<?php echo $t->get_field_id('parallax-speed'); ?>" name="<?php echo $t->get_field_name('parallax-speed'); ?>">
+                        <?php foreach( range(0, 1, 0.1) as $number ) { ?>
+                            <option <?php selected( $instance['parallax-speed'], $number ); ?>value="<?php echo $number; ?>"><?php echo $number; ?></option>
+                        <?php } ?>
+                    </select>
+                    <span><em>The speed at which the parallax effect runs. 0.0 means the image will appear fixed in place, and 1.0 the image will flow at the same speed as the page content.</em></span>
+                </p>
+            </div>
         </div>
         <?php
         $return = null;
@@ -55,6 +88,8 @@ class RA_Widgets_Parallax {
 
     public function rawp_in_widget_form_update( $instance, $new_instance, $old_instance ) {
         $instance['parallax-image'] = $new_instance['parallax-image'];
+        $instance['parallax-position'] = $new_instance['parallax-position'];
+        $instance['parallax-speed'] = $new_instance['parallax-speed'];
 
         return $instance;
     }
@@ -68,11 +103,25 @@ class RA_Widgets_Parallax {
         $widget_num = $widget_obj['params'][0]['number'];
         // $data = '';
 
-        if ( isset( $widget_opt[$widget_num]['parallax-image'] ) && !empty( $widget_opt[$widget_num]['parallax-image'] ) ) {
-            $data = 'style="position:relative;">';
-            $data .= '<div class="parallax-window" data-parallax="scroll" data-image-src="' .$widget_opt[$widget_num]['parallax-image']. '"></div>';
+        $attrs = array();
 
-            $params[0]['before_widget'] = preg_replace( '/>/', $data,  $params[0]['before_widget'], 1 );
+        if ( isset( $widget_opt[$widget_num]['parallax-image'] ) && !empty( $widget_opt[$widget_num]['parallax-image'] ) ) {
+            $attrs['class'] = 'parallax-window';
+            $attrs['data-image-src'] = $widget_opt[$widget_num]['parallax-image'];
+            $attrs['data-parallax'] = 'scroll';
+        }
+
+        if ( isset( $widget_opt[$widget_num]['parallax-position'] ) && !empty( $widget_opt[$widget_num]['parallax-position'] ) ) $attrs['data-position'] = $widget_opt[$widget_num]['parallax-position'];
+        if ( isset( $widget_opt[$widget_num]['parallax-speed'] ) && !empty( $widget_opt[$widget_num]['parallax-speed'] ) ) $attrs['data-speed'] = $widget_opt[$widget_num]['parallax-speed'];
+        $attr = '';
+        if ( isset( $widget_opt[$widget_num]['parallax-image'] ) && !empty( $widget_opt[$widget_num]['parallax-image'] ) ) {
+            $attr = 'style="position: relative;"><div ';
+            foreach( $attrs as $key => $value ) {
+                $attr .= $key . '="' . $value .'" ';
+            }
+            $attr .= '></div>';
+
+            $params[0]['before_widget'] = preg_replace( '/>/', $attr,  $params[0]['before_widget'], 1 );
         }
 
         return $params;
