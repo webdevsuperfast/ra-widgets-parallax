@@ -1,0 +1,25 @@
+{
+  "name": "ra-widgets-parallax",
+  "authors": [
+    "Rotsen Mark Acob <acob.rotsen@hotmail.com>"
+  ],
+  "description": "Add parallax scrolling effect on your widgets.",
+  "main": "",
+  "keywords": [
+    "parallax",
+    "widgets"
+  ],
+  "license": "GPLv2",
+  "homepage": "https://github.com/webdevsuperfast/ra-widgets-parallax",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "parallax.js": "^1.4.2"
+  }
+}

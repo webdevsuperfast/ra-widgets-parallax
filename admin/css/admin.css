@@ -1,0 +1,23 @@
+/* ## Admin Style
+----------------------------------------------------------------------------- */
+.rawp-fields {
+    padding: 10px;
+    background: #f1f1f1;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.rawp-fields::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.rawp-fields label {
+    margin-bottom: 10px;
+    text-transform: unset;
+}
+
+.rawp-fields input[type="text"] {
+    margin-bottom: 10px;
+}

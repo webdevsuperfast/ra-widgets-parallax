@@ -1,0 +1,40 @@
+{
+  "name": "ra-widgets-parallax",
+  "version": "1.0.0",
+  "description": "Add parallax scrolling effect on your widgets.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webdevsuperfast/ra-widgets-parallax.git"
+  },
+  "keywords": [
+    "parallax",
+    "widgets"
+  ],
+  "author": "Rotsen Mark Acob",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/webdevsuperfast/ra-widgets-parallax/issues"
+  },
+  "homepage": "https://github.com/webdevsuperfast/ra-widgets-parallax#readme",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-cache": "^0.4.6",
+    "gulp-changed": "^3.1.0",
+    "gulp-clean-css": "^3.4.1",
+    "gulp-combine-mq": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-flatmap": "^1.0.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "merge-stream": "^1.0.1",
+    "vinyl-paths": "^2.1.0"
+  }
+}
