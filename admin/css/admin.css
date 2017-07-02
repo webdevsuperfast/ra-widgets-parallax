@@ -52,7 +52,7 @@
     margin-bottom: 5px;
 }
 
-.rawp-fields input[type="text"], select {
+.rawp-fields input[type="text"], .rawp-fields select {
     margin-bottom: 5px;
 }
 
