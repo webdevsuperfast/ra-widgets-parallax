@@ -45,9 +45,9 @@ class RA_Widgets_Parallax {
             <div class="rawp-field" style="display: none;">
                 <p>
                     <label for="<?php echo $t->get_field_name( 'parallax-image' ); ?>"><?php echo __( 'Image', 'ra-widgets-parallax' ); ?></label>
-                    <input type="text" class="widefat" id="<?php echo $t->get_field_id( 'parallax-image' ); ?>" name="<?php echo $t->get_field_name( 'parallax-image' ); ?>" value="<?php echo $instance['parallax-image']; ?>" />
-                    <span><em>You must provide a path to the image enable parallax effect.</em></span>
+                    <input type="text" class="widefat rawp-input-image" id="<?php echo $t->get_field_id( 'parallax-image' ); ?>" name="<?php echo $t->get_field_name( 'parallax-image' ); ?>" value="<?php echo $instance['parallax-image']; ?>" />
                     <a href="#" class="rawp_upload_image_button button button-primary"><?php echo __( 'Upload image', 'ra-widgets-parallax' ); ?></a>
+                    <span><em>You must provide a path to the image to enable parallax effect.</em></span>
                 </p>
                 <p>
                     <label for="<?php echo $t->get_field_id( 'parallax-position' ); ?>"><?php echo __( 'Position', 'ra-widgets-parallax' ); ?></label>

@@ -3,7 +3,7 @@ jQuery(function($){
 		e.preventDefault();
  
     		var button = $(this),
-                inputText = button.prev('.widefat'),
+                inputText = button.prev(),
     		    custom_uploader = wp.media({
 			title: 'Insert image',
 			library : {
