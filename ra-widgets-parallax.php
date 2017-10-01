@@ -33,10 +33,9 @@ class RA_Widgets_Parallax {
     }
 
     public function rawp_in_widget_form( $t, $return, $instance ) {
-        $instance = wp_parse_args( (array) $instance, array( 'parallax-image' => '', 'parallax-position' => '', 'parallax-speed' => '0.2' ) );
+        $instance = wp_parse_args( (array) $instance, array( 'parallax-image' => '', 'parallax-speed' => '0.15' ) );
 
         if ( !isset( $instance['parallax-image'] ) ) $instance['parallax-image'] = null;
-        if ( !isset( $instance['parallax-position'] ) ) $instance['parallax-position'] = null;
         if ( !isset( $instance['parallax-speed'] ) ) $instance['parallax-speed'] = null; 
         ?>
 
@@ -47,27 +46,7 @@ class RA_Widgets_Parallax {
                     <label for="<?php echo $t->get_field_name( 'parallax-image' ); ?>"><?php echo __( 'Image', 'ra-widgets-parallax' ); ?></label>
                     <input type="text" class="widefat rawp-input-image" id="<?php echo $t->get_field_id( 'parallax-image' ); ?>" name="<?php echo $t->get_field_name( 'parallax-image' ); ?>" value="<?php echo $instance['parallax-image']; ?>" />
                     <a href="#" class="rawp_upload_image_button button button-primary"><?php echo __( 'Upload image', 'ra-widgets-parallax' ); ?></a>
-                    <span><em>You must provide a path to the image to enable parallax effect.</em></span>
-                </p>
-                <p>
-                    <label for="<?php echo $t->get_field_id( 'parallax-position' ); ?>"><?php echo __( 'Position', 'ra-widgets-parallax' ); ?></label>
-                    <?php
-                    $positions = array(
-                        '' => __( 'Default' ),
-                        'center center' => __( 'Center Center' ),
-                        'center top' => __( 'Center Top' ),
-                        'center bottom' => __( 'Center Bottom' ),
-                        'right top' => __( 'Right Top' ),
-                        'right bottom' => __( 'Right Bottom' ),
-                        'left top' => __( 'Left Top' ),
-                        'left bottom' => __( 'Left Bottom' )
-                    ); ?>
-                    <select class="widefat" id="<?php echo $t->get_field_id('parallax-position'); ?>" name="<?php echo $t->get_field_name('parallax-position'); ?>">
-                        <?php foreach( $positions as $key => $value ) { ?>
-                            <option <?php selected( $instance['parallax-position'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
-                        <?php } ?>
-                    </select>
-                    <span><em>This is analogous to the background-position css property.</em></span>
+                    <span><em><?php _e( 'You must provide a path to the image to enable parallax effect.', 'ra-widgets-parallax' ); ?></em></span>
                 </p>
                 <p>
                     <label for="<?php echo $t->get_field_id('parallax-speed'); ?>"><?php echo __( 'Speed', 'ra-widgets-parallax' ); ?></label>
@@ -76,7 +55,7 @@ class RA_Widgets_Parallax {
                             <option <?php selected( $instance['parallax-speed'], $number ); ?>value="<?php echo $number; ?>"><?php echo $number; ?></option>
                         <?php } ?>
                     </select>
-                    <span><em>The speed at which the parallax effect runs. 0.0 means the image will appear fixed in place, and 1.0 the image will flow at the same speed as the page content.</em></span>
+                    <span><em><?php e_( 'The speed at which the parallax effect runs. A lower number means slower, higher means faster and 0.15 is the default.', 'ra-widgets-parallax' ); ?></em></span>
                 </p>
             </div>
         </div>
@@ -88,7 +67,6 @@ class RA_Widgets_Parallax {
 
     public function rawp_in_widget_form_update( $instance, $new_instance, $old_instance ) {
         $instance['parallax-image'] = $new_instance['parallax-image'];
-        $instance['parallax-position'] = $new_instance['parallax-position'];
         $instance['parallax-speed'] = $new_instance['parallax-speed'];
 
         return $instance;
@@ -101,19 +79,27 @@ class RA_Widgets_Parallax {
         $widget_obj = $wp_registered_widgets[$widget_id];
         $widget_opt = get_option( $widget_obj['callback'][0]->option_name );
         $widget_num = $widget_obj['params'][0]['number'];
-        // $data = '';
 
         $attrs = array();
-
+        
         if ( isset( $widget_opt[$widget_num]['parallax-image'] ) && !empty( $widget_opt[$widget_num]['parallax-image'] ) ) {
             $attrs['class'] = 'parallax-window';
-            $attrs['data-image-src'] = $widget_opt[$widget_num]['parallax-image'];
-            $attrs['data-parallax'] = 'scroll';
+
+            $styles = array();
+
+            $styles['background-image'] = $widget_opt[$widget_num]['parallax-image'];
+
+            $style = '';
+
+            foreach( $styles as  $key => $value ) {
+                $style .= $key . ':' . $value . '; ';
+            }
+
+            $attr['style'] = $style;
         }
 
-        if ( isset( $widget_opt[$widget_num]['parallax-position'] ) && !empty( $widget_opt[$widget_num]['parallax-position'] ) ) $attrs['data-position'] = $widget_opt[$widget_num]['parallax-position'];
         if ( isset( $widget_opt[$widget_num]['parallax-speed'] ) && !empty( $widget_opt[$widget_num]['parallax-speed'] ) ) $attrs['data-speed'] = $widget_opt[$widget_num]['parallax-speed'];
-        $attr = '';
+        $attr = ' ';
         if ( isset( $widget_opt[$widget_num]['parallax-image'] ) && !empty( $widget_opt[$widget_num]['parallax-image'] ) ) {
             $attr = 'style="position: relative;"><div ';
             foreach( $attrs as $key => $value ) {
@@ -121,7 +107,7 @@ class RA_Widgets_Parallax {
             }
             $attr .= '></div>';
 
-            $params[0]['before_widget'] = preg_replace( '/>/', $attr,  $params[0]['before_widget'], 1 );
+            $params[0]['before_widget'] = preg_replace( '/>$/', $attr,  $params[0]['before_widget'], 1 );
         }
 
         return $params;
