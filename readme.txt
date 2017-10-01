@@ -3,8 +3,8 @@ Contributors: FrodoBean
 Donate link: https://rotsenacob.com/
 Tags: parallax, widgets
 Requires at least: 4.7
-Tested up to: 4.8
-Stable tag: 1.0.0
+Tested up to: 4.8.2
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Add parallax scrolling image effect on your widgets.
 
 == Description ==
 
-RA Widgets Parallax is a WordPress plugin that adds additional widget fields into existing widget forms and uses [Parallax.js](http://pixelcog.github.io/parallax.js/) to render parallax scrolling effect.
+RA Widgets Parallax is a WordPress plugin that adds additional widget fields into existing widget forms and uses [jQuery Simple Parallax](http://designers.hubspot.com/docs/snippets/design/implement-a-parallax-effect) to render parallax scrolling effect.
 
 <h3>Features</h3>
 
@@ -22,3 +22,23 @@ RA Widgets Parallax is a WordPress plugin that adds additional widget fields int
 
 1. Upload the plugin files to the `/wp-content/plugins/ra-widgets-parallax` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through 'Plugins' screen in WordPress.
+
+== Changelog ==
+= 1.0.2 =
+* Replaced parallax plugin and removed unneeded files.
+
+= 1.0.1 =
+* Fixed image URL not populating input field
+
+= 1.0 =
+* First Release
+
+== Upgrade Notice ==
+= 1.0.2 =
+Replaced parallax plugin and removed unneeded files.
+
+= 1.0.1 =
+Fixed image URL not populating input field
+
+= 1.0 =
+First Release
