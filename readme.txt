@@ -12,7 +12,7 @@ Add parallax scrolling image effect on your widgets.
 
 == Description ==
 
-RA Widgets Parallax is a WordPress plugin that adds additional widget fields into existing widget forms and uses [jQuery Simple Parallax](http://designers.hubspot.com/docs/snippets/design/implement-a-parallax-effect) to render parallax scrolling effect.
+RA Widgets Parallax is a WordPress plugin that adds additional widget fields into existing widget forms and uses [Paroller JS](https://github.com/tgomilar/paroller.js/) to render parallax scrolling effect.
 
 <h3>Features</h3>
 
