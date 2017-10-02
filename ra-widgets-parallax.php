@@ -55,7 +55,7 @@ class RA_Widgets_Parallax {
                             <option <?php selected( $instance['parallax-speed'], $number ); ?>value="<?php echo $number; ?>"><?php echo $number; ?></option>
                         <?php } ?>
                     </select>
-                    <span><em><?php e_( 'The speed at which the parallax effect runs. A lower number means slower, higher means faster and 0.15 is the default.', 'ra-widgets-parallax' ); ?></em></span>
+                    <span><em><?php _e( 'The speed at which the parallax effect runs. A lower number means slower, higher means faster and 0.15 is the default.', 'ra-widgets-parallax' ); ?></em></span>
                 </p>
             </div>
         </div>
@@ -87,19 +87,29 @@ class RA_Widgets_Parallax {
 
             $styles = array();
 
-            $styles['background-image'] = $widget_opt[$widget_num]['parallax-image'];
+            // $styles['background-image'] = 'url("' .$widget_opt[$widget_num]['parallax-image'] .'")'; // $widget_opt[$widget_num]['parallax-image'];
+
+            $attrs['data-image'] = $widget_opt[$widget_num]['parallax-image'];
 
             $style = '';
+
+                // var_dump( $styles );
 
             foreach( $styles as  $key => $value ) {
                 $style .= $key . ':' . $value . '; ';
             }
 
-            $attr['style'] = $style;
+            $attrs['style'] = $style;
         }
 
-        if ( isset( $widget_opt[$widget_num]['parallax-speed'] ) && !empty( $widget_opt[$widget_num]['parallax-speed'] ) ) $attrs['data-speed'] = $widget_opt[$widget_num]['parallax-speed'];
+        if ( isset( $widget_opt[$widget_num]['parallax-speed'] ) && !empty( $widget_opt[$widget_num]['parallax-speed'] ) ) { 
+            $attrs['data-speed'] = $widget_opt[$widget_num]['parallax-speed']; 
+        } else {
+            $attrs['data-speed'] = (int) '0.15';
+        }
+        
         $attr = ' ';
+        
         if ( isset( $widget_opt[$widget_num]['parallax-image'] ) && !empty( $widget_opt[$widget_num]['parallax-image'] ) ) {
             $attr = 'style="position: relative;"><div ';
             foreach( $attrs as $key => $value ) {
@@ -117,6 +127,10 @@ class RA_Widgets_Parallax {
         if ( !is_admin() ) {
             wp_register_script( 'rawp-parallax-js', plugin_dir_url( __FILE__ ) . 'public/js/parallax.min.js', array( 'jquery' ), null, true );
             wp_enqueue_script( 'rawp-parallax-js' );
+
+            // Main JS
+            wp_register_script( 'rawp-app-js', plugin_dir_url( __FILE__ ) . 'public/js/app.js', array( 'rawp-parallax-js' ), null, true );
+            wp_enqueue_script( 'rawp-app-js' );
 
             wp_enqueue_style( 'rawp-parallax-css', plugin_dir_url( __FILE__ ) . 'public/css/app.css' );
         }
