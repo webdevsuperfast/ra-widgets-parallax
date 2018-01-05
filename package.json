@@ -6,10 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/webdevsuperfast/ra-widgets-parallax.git"
-  },
+  "repository": "git+https://github.com/webdevsuperfast/ra-widgets-parallax.git",
   "keywords": [
     "parallax",
     "widgets"
@@ -23,18 +20,22 @@
   "devDependencies": {
     "del": "^3.0.0",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-cache": "^0.4.6",
-    "gulp-changed": "^3.1.0",
-    "gulp-clean-css": "^3.9.0",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-cache": "^1.0.2",
+    "gulp-changed": "^3.2.0",
+    "gulp-clean-css": "^3.9.2",
     "gulp-combine-mq": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-flatmap": "^1.0.0",
-    "gulp-notify": "^3.0.0",
+    "gulp-notify": "^3.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "merge-stream": "^1.0.1",
     "vinyl-paths": "^2.1.0"
+  },
+  "private": true,
+  "dependencies": {
+    "jquery-parallax.js": "^1.5.0"
   }
 }
