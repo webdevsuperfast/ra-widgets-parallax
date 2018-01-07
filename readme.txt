@@ -1,7 +1,7 @@
 === RA Widgets Parallax ===
 Contributors: FrodoBean
 Donate link: https://paypal.me/webdevsuperfast
-Tags: paroller.js, parallax, widgets
+Tags: parallax.js, parallax, widgets
 Requires at least: 4.7
 Tested up to: 4.8.2
 Stable tag: 1.0.2
