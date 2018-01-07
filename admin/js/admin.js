@@ -25,10 +25,26 @@ jQuery(function($){
 			$button.siblings('input').val(attachment.url).change();
 			// imgText.src(attachment.url);
 			$button.siblings('img').attr('src', attachment.url);
+
+			$button.addClass('hidden');
+
+			$button.siblings('button').removeClass('hidden');
 		});
    
 		// Finally, open the modal
 		file_frame.open();
+	});
+
+	$(document).on('click', '.rawp_delete_image_button', function(e){
+		e.preventDefault();
+
+		var $button = $(this);
+
+		$button.addClass('hidden');
+		$button.siblings('button').removeClass('hidden');
+
+		$button.siblings('img').attr('src', '');
+		$button.siblings('input').val('').change();
 	});
 
 	function toggleIt() {
