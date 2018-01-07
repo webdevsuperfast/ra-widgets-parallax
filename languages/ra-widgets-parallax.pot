@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: RA Widgets Parallax\n"
-"POT-Creation-Date: 2017-10-02 11:53+0800\n"
-"PO-Revision-Date: 2017-10-02 11:53+0800\n"
+"POT-Creation-Date: 2018-01-08 06:22+0800\n"
+"PO-Revision-Date: 2018-01-08 06:21+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: ra-widgets-parallax.php\n"
@@ -25,64 +25,79 @@ msgstr ""
 msgid "With great power comes great responsibility."
 msgstr ""
 
-#: ra-widgets-parallax.php:56
+#: ra-widgets-parallax.php:60
 msgid "Parallax Settings"
 msgstr ""
 
-#: ra-widgets-parallax.php:59
+#: ra-widgets-parallax.php:63
 msgid "Image"
 msgstr ""
 
-#: ra-widgets-parallax.php:61
+#: ra-widgets-parallax.php:66
 msgid "Upload image"
 msgstr ""
 
-#: ra-widgets-parallax.php:62
+#: ra-widgets-parallax.php:68
 msgid "You must provide a path to the image to enable parallax effect."
 msgstr ""
 
-#: ra-widgets-parallax.php:65
+#: ra-widgets-parallax.php:71
 msgid "Speed"
 msgstr ""
 
-#: ra-widgets-parallax.php:67
+#: ra-widgets-parallax.php:73
 msgid ""
-"This attribute is necessary to enable parallax scrolling effect. It sets "
-"elements offset and speed. It can be positive (0.3) or negative (-0.3). Less "
-"means slower."
-msgstr ""
-
-#: ra-widgets-parallax.php:70
-msgid "Type"
+"The speed at which the parallax effect runs. 0.0 means the image will appear "
+"fixed in place, and 1.0 the image will flow at the same speed as the page "
+"content."
 msgstr ""
 
 #: ra-widgets-parallax.php:76
-msgid ""
-"This attribute is optional. It has two values background and foreground."
+msgid "Position"
 msgstr ""
 
-#: ra-widgets-parallax.php:79
-msgid "Direction"
+#: ra-widgets-parallax.php:82
+msgid ""
+"This is analogous to the background-position css property. Specify "
+"coordinates as top, bottom, right, left, or center. The parallax image will "
+"be positioned as close to these values as possible while still covering the "
+"target element."
 msgstr ""
 
 #: ra-widgets-parallax.php:85
-msgid "This attribute is optional. It has two values vertical and horizontal."
+msgid "Mirror Container"
+msgstr ""
+
+#: ra-widgets-parallax.php:87
+msgid "The parallax mirror will be prepended into this container."
+msgstr ""
+
+#: ra-widgets-parallax.php:185
+msgid "Center Center"
+msgstr ""
+
+#: ra-widgets-parallax.php:186
+msgid "Center Top"
+msgstr ""
+
+#: ra-widgets-parallax.php:187
+msgid "Center Bottom"
+msgstr ""
+
+#: ra-widgets-parallax.php:188
+msgid "Right Top"
+msgstr ""
+
+#: ra-widgets-parallax.php:189
+msgid "Right Bottom"
 msgstr ""
 
 #: ra-widgets-parallax.php:190
-msgid "Horizontal"
+msgid "Left Top"
 msgstr ""
 
 #: ra-widgets-parallax.php:191
-msgid "Vertical"
-msgstr ""
-
-#: ra-widgets-parallax.php:199
-msgid "Background"
-msgstr ""
-
-#: ra-widgets-parallax.php:200
-msgid "Foreground"
+msgid "Left Bottom"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
