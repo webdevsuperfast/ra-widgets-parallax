@@ -43,8 +43,8 @@ class RA_Widgets_Parallax {
         $instance = wp_parse_args( (array) $instance, array( 
             'parallax-image' => '', 
             'parallax-speed' => '0.2', 
-            'parallax-position' => 'center center',
-            'parallax-container' => 'body'
+            'parallax-position' => '',
+            'parallax-container' => ''
         ) );
 
         if ( !isset( $instance['parallax-image'] ) ) $instance['parallax-image'] = null;
@@ -78,7 +78,7 @@ class RA_Widgets_Parallax {
                             <option <?php selected( $instance['parallax-position'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
                         <?php } ?>
                     </select>
-                    <span><em><?php _e( 'This is analogous to the background-position css property. Specify coordinates as top, bottom, right, left, center, or pixel values (e.g. -10px 0px). The parallax image will be positioned as close to these values as possible while still covering the target element.', 'ra-widgets-parallax' ); ?></em></span>
+                    <span><em><?php _e( 'This is analogous to the background-position css property. Specify coordinates as top, bottom, right, left, or center. The parallax image will be positioned as close to these values as possible while still covering the target element.', 'ra-widgets-parallax' ); ?></em></span>
                 </p>
                 <p>
                     <label for="<?php echo $t->get_field_id( 'parallax-container' ); ?>"><?php _e( 'Mirror Container', 'ra-widgets-parallax' ); ?></label>
@@ -94,7 +94,7 @@ class RA_Widgets_Parallax {
     }
 
     public function rawp_in_widget_form_update( $instance, $new_instance, $old_instance ) {
-        $instance['parallax-image'] = ( ! empty( $new_instance['parallax-image'] ) ) ? $new_instance['parallax-image'] : '';
+        $instance['parallax-image'] = $new_instance['parallax-image'];
         $instance['parallax-speed'] = $new_instance['parallax-speed'];
         $instance['parallax-position'] = $new_instance['parallax-position'];
         $instance['parallax-container'] = $new_instance['parallax-container'];
@@ -147,7 +147,7 @@ class RA_Widgets_Parallax {
 
     public function rawp_enqueue_scripts() {
         if ( !is_admin() ) {
-            // Paroller JS
+            // Parallax JS
             wp_register_script( 'rawp-parallax-js', plugin_dir_url( __FILE__ ) . 'public/js/parallax.min.js', array( 'jquery' ), RAWP_VERSION, true );
             wp_enqueue_script( 'rawp-parallax-js' );
 
@@ -162,11 +162,14 @@ class RA_Widgets_Parallax {
 
         //Only load if we are not on the widget page
         if ( $current_page->id === 'widgets' ){
+            // Enqueue WP Media
             wp_enqueue_script( 'media-upload' );
             wp_enqueue_media();
             
+            // Admin Script
             wp_enqueue_script( 'rawp-admin-js', plugin_dir_url( __FILE__ ) . 'admin/js/admin.js' );
 
+            // Admin Style
             wp_enqueue_style( 'rawp-admin-css', plugin_dir_url( __FILE__ ) . 'admin/css/admin.css' );
         }
     }
