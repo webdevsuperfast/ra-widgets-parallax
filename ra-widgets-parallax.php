@@ -63,7 +63,8 @@ class RA_Widgets_Parallax {
                     <label for="<?php echo $t->get_field_name( 'parallax-image' ); ?>"><?php _e( 'Image', 'ra-widgets-parallax' ); ?></label>
                     <img src="<?php if ( !empty( $instance['parallax-image'] ) ) echo $instance['parallax-image']; ?>" alt="">
                     <input type="hidden" class="widefat rawp-input-image" id="<?php echo $t->get_field_id( 'parallax-image' ); ?>" name="<?php echo $t->get_field_name( 'parallax-image' ); ?>" value="<?php echo $instance['parallax-image']; ?>" />
-                    <button class="rawp_upload_image_button button button-primary"><?php _e( 'Upload image', 'ra-widgets-parallax' ); ?></button>
+                    <button class="rawp_upload_image_button button button-primary <?php if ( !empty( $instance['parallax-image'] ) ) echo 'hidden'; ?>"><?php _e( 'Upload image', 'ra-widgets-parallax' ); ?></button>
+                    <button class="rawp_delete_image_button button button-secondary <?php if ( empty( $instance['parallax-image'] ) ) echo 'hidden'; ?>">Remove Image</button>
                     <span><em><?php _e( 'You must provide a path to the image to enable parallax effect.', 'ra-widgets-parallax' ); ?></em></span>
                 </p>
                 <p>
