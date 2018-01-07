@@ -22,7 +22,7 @@ jQuery(function($){
 	
 			var attachment = file_frame.state().get('selection').first().toJSON();
 	
-			$button.siblings('input').val(attachment.url);
+			$button.siblings('input').val(attachment.url).change();
 			// imgText.src(attachment.url);
 			$button.siblings('img').attr('src', attachment.url);
 		});
