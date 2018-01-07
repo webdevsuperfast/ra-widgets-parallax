@@ -47,20 +47,30 @@ jQuery(function($){
 		$button.siblings('input').val('').change();
 	});
 
-	function toggleIt() {
-		$('body').on('click', '.rawp-toggle', function(e){
-			e.preventDefault();
+	$(document).on('click', '.rawp-toggle', function(e) {
+		e.preventDefault();
 
-			$(this).toggleClass('open');
-			$('.rawp-field').toggle();
-		});
-	}
+		var toggler = $(this);
 
-	$(document).on('widget-updated', function(event, widget){
-		$(widget).each(function(){
-			$('.rawp-field').toggle();
-		});
+		toggler.toggleClass('open');
+		toggler.next().toggle();
+
+		// Add display to local storage
+		localStorage.setItem('display', toggler.next().is(':visible'));
 	});
 
-	toggleIt();
+	if (localStorage.getItem('display') == 'true') {
+		$('.rawp-field').show();
+	}
+
+	$(document).on('widget-updated widget-added', function(event, widget){
+		$(widget).each(function(){
+			var toggler = $(this).find('.rawp-toggle');
+			var display = localStorage.getItem('display');
+			if (display == 'true') {
+				toggler.toggleClass('open');
+				toggler.next().show();
+			}
+		});
+	});
 });
