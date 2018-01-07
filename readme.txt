@@ -26,6 +26,10 @@ RA Widgets Parallax is a WordPress plugin that adds additional widget fields int
 1. Upload the plugin files to the `/wp-content/plugins/ra-widgets-parallax` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through 'Plugins' screen in WordPress.
 
+== Screenshots ==
+
+1. 'Parallax' fields inside 'Widgets' screen in WordPress.
+
 == Changelog ==
 = 1.0.3 =
 * Reverted back to Parallax.js, updated form fields, hide form fields when using SiteOrigin Panels, better image handling, style changes.
