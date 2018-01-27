@@ -14,10 +14,6 @@ Domain Path: /languages
 
 defined( 'ABSPATH' ) or die( esc_html_e( 'With great power comes great responsibility.', 'ra-widgets-parallax' ) );
 
-$plugin_data = get_plugin_data( __FILE__ );
-
-define( 'RAWP_VERSION', $plugin_data['Version'] );
-
 class RA_Widgets_Parallax {
     public function __construct() {
         // Add input fields
@@ -149,7 +145,7 @@ class RA_Widgets_Parallax {
     public function rawp_enqueue_scripts() {
         if ( !is_admin() ) {
             // Parallax JS
-            wp_register_script( 'rawp-parallax-js', plugin_dir_url( __FILE__ ) . 'public/js/parallax.min.js', array( 'jquery' ), RAWP_VERSION, true );
+            wp_register_script( 'rawp-parallax-js', plugin_dir_url( __FILE__ ) . 'public/js/parallax.min.js', array( 'jquery' ), null, true );
             wp_enqueue_script( 'rawp-parallax-js' );
 
             // Main CSS
