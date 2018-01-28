@@ -3,7 +3,7 @@
 Plugin Name: RA Widgets Parallax
 Plugin URI:  https://github.com/webdevsuperfast/ra-widgets-parallax
 Description: Add parallax scrolling image effect on your widgets.
-Version:     1.0.3
+Version:     1.0.4
 Author:      Rotsen Mark Acob
 Author URI:  https://rotsenacob.com/
 License:     GPL2
