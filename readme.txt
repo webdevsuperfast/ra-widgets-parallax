@@ -4,7 +4,7 @@ Donate link: https://paypal.me/webdevsuperfast
 Tags: parallax.js, parallax, widgets
 Requires at least: 4.7
 Tested up to: 4.9.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,9 @@ RA Widgets Parallax is a WordPress plugin that adds additional widget fields int
 1. 'Parallax' fields inside 'Widgets' screen in WordPress.
 
 == Changelog ==
+= 1.0.4 =
+* Removed $plugin_data that causes undefined function error.
+
 = 1.0.3 =
 * Reverted back to Parallax.js, updated form fields, hide form fields when using SiteOrigin Panels, better image handling, style changes.
 
@@ -44,6 +47,9 @@ RA Widgets Parallax is a WordPress plugin that adds additional widget fields int
 * First Release
 
 == Upgrade Notice ==
+= 1.0.4 =
+Removed $plugin_data that causes undefined function error.
+
 = 1.0.3 =
 Reverted back to Parallax.js, updated form fields, hide form fields when using SiteOrigin Panels, better image handling, style changes.
 
